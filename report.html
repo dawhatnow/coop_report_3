@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daman — Co-op Work Term Report | Equitable Life of Canada</title>
+<meta name="description" content="A reflection on a four-month co-op work term with the Data Governance &amp; Quality team at Equitable Life of Canada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="tag rise">
+      <span>Co-op Work Term Report</span>
+      <span>University of Guelph</span>
+      <span>B.Comp. Software Engineering</span>
+      <span>Work Term III</span>
+    </div>
+
+    <h1 class="rise d1">Four months learning to ask <em>why</em> the data says what it says.</h1>
+
+    <p class="standfirst rise d2">
+      A reflection on my work term with the Data Governance &amp; Quality team at Equitable Life
+      of Canada — what I built, what I got wrong, and the one piece of feedback I'm taking into
+      everything that comes next.
+    </p>
+
+    <!-- The page's own navigation, modelled as the thing I spent the term building: a star schema. -->
+    <nav class="schema rise d3" aria-label="Report sections">
+      <p class="schema-label">Report model — select a dimension</p>
+
+      <div class="schema-grid">
+        <svg class="schema-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="50" y1="50" x2="17" y2="16"/>
+          <line x1="50" y1="50" x2="83" y2="16"/>
+          <line x1="50" y1="50" x2="17" y2="84"/>
+          <line x1="50" y1="50" x2="83" y2="84"/>
+        </svg>
+
+        <a class="node n1" href="#employer">
+          <span class="key">dim_employer</span>
+          <span class="name">The Employer</span>
+          <span class="cols">who they are · where data sits</span>
+        </a>
+
+        <a class="node n2" href="#goals">
+          <span class="key">dim_goals</span>
+          <span class="name">Learning Goals</span>
+          <span class="cols">set in week one · graded honestly</span>
+        </a>
+
+        <div class="node fact nf">
+          <span class="key">fact_work_term</span>
+          <span class="name">Summer 2026 · 4 months</span>
+          <span class="cols">Waterloo, ON · Data Governance &amp; Quality</span>
+        </div>
+
+        <a class="node n3" href="#work">
+          <span class="key">dim_projects</span>
+          <span class="name">The Work</span>
+          <span class="cols">dashboard · schema · teaching</span>
+        </a>
+
+        <a class="node n4" href="#reflection">
+          <span class="key">dim_reflection</span>
+          <span class="name">Reflection</span>
+          <span class="cols">what changed in how I think</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="intro">
+      <div class="head">
+        <span class="key">00 / abstract</span>
+        <h2>What this report is</h2>
+      </div>
+      <p class="lede">
+        I spent my first co-op work term as a Data Governance &amp; Quality co-op at Equitable Life
+        of Canada, from May to August 2026. I came in expecting to write code. I spent most of the
+        term writing models, documentation, and explanations instead — and that turned out to be
+        the more useful lesson.
+      </p>
+      <p>
+        If you read only one thing here, read the reflection at the end. The projects are real and
+        I'm proud of them, but the thing I'll carry forward is a habit I didn't have in May: not
+        stopping at a number that looks correct.
+      </p>
+    </section>
+
+    <section id="employer">
+      <div class="head">
+        <span class="key">01 / employer</span>
+        <h2>Equitable Life of Canada</h2>
+      </div>
+      <p>
+        Equitable Life is one of Canada's largest mutual life insurance companies. Being a mutual
+        company means it has no external shareholders — it's owned by its participating
+        policyholders, which shapes how decisions get weighed internally in a way I hadn't
+        encountered before.
+      </p>
+      <p>
+        My team sat inside Data &amp; Analytics. Data governance is the discipline of making an
+        organization's data trustworthy: defining what a term officially means, tracking who owns
+        which dataset, measuring quality, and giving people a way to find and understand data
+        without having to know a specific person who happens to remember how a table works. In
+        computing terms it lives at the intersection of data modelling, reporting infrastructure,
+        and information architecture — and a surprising amount of it is a communication problem
+        wearing a technical costume.
+      </p>
+
+      <dl class="facts">
+        <div><dt>Team</dt><dd>Data Governance &amp; Quality</dd></div>
+        <div><dt>Term</dt><dd>May – August 2026</dd></div>
+        <div><dt>Primary tools</dt><dd>Power BI, DAX, SQL, SharePoint</dd></div>
+        <div><dt>Supervisor</dt><dd>Data Specialist, Data &amp; Analytics</dd></div>
+      </dl>
+    </section>
+
+    <section id="goals">
+      <div class="head">
+        <span class="key">02 / goals</span>
+        <h2>What I set out to learn</h2>
+      </div>
+      <p>
+        I wrote these in my first two weeks. I've marked each one honestly, including the one I
+        only partly got to.
+      </p>
+
+      <ul class="goals">
+        <li>
+          <span class="status">Met</span>
+          <div>
+            <h3>Get genuinely fluent in Power BI and dimensional modelling</h3>
+            <p>
+              I wanted a real reporting tool on my resume rather than a tutorial-level
+              familiarity. By August I was building models, writing DAX measures, and — more
+              importantly — able to explain why a model was structured the way it was.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="status">Met</span>
+          <div>
+            <h3>Contribute to a governance deliverable that people actually use</h3>
+            <p>
+              I wanted to ship something with an audience, not a sandbox exercise. The Data
+              Governance report went to stakeholders who make decisions from it, which meant my
+              errors had consequences — the most useful pressure I've worked under so far.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="status">Met</span>
+          <div>
+            <h3>Improve technical communication by teaching what I learned</h3>
+            <p>
+              I set out to present at least once to people more senior than me. I ended up writing
+              learning material on star schemas for our internal platform and presenting to the
+              Data &amp; Analytics community of practice — an audience that already knew the topic
+              better than I did, which is exactly why it was worth doing.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="status">Met</span>
+          <div>
+            <h3>Understand how client experience data travels end to end</h3>
+            <p>
+              Supporting the Voice of the Client work let me follow data from the contact centre
+              platform all the way to a number in front of a decision-maker, and see how many
+              judgement calls sit in between.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="status partial">Partly met</span>
+          <div>
+            <h3>Move from reporting the data to interrogating it</h3>
+            <p>
+              This is the honest one. I got good at answering "what does this show?" and I was
+              slower to ask "why does it show that, and should we trust it?" I caught the habit
+              late in the term and it became the piece of feedback I most want to act on. Naming
+              it here is deliberate — it's the goal I'm carrying into my next work term rather
+              than quietly closing.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="work">
+      <div class="head">
+        <span class="key">03 / the work</span>
+        <h2>What I actually did</h2>
+      </div>
+      <p>
+        Three threads ran through the term. The first two were assigned; the third started as
+        something to do during a slow week and ended up being the work I'm proudest of.
+      </p>
+
+      <div class="projects">
+        <article class="card">
+          <span class="key">Thread 01</span>
+          <h3>Data governance reporting</h3>
+          <p>
+            Supported the build of a Power BI dashboard tracking data governance and quality
+            metrics, so that stakeholders could see the state of our data without someone
+            assembling it by hand each cycle. Most of the difficulty wasn't the visuals — it was
+            agreeing on what each metric meant before anything could be counted.
+          </p>
+          <div class="stack"><span>Power BI</span><span>DAX</span><span>SQL</span><span>Requirements</span></div>
+        </article>
+
+        <article class="card">
+          <span class="key">Thread 02</span>
+          <h3>Star schema for contact centre data</h3>
+          <p>
+            Designed a dimensional model over cloud contact centre data supporting the Voice of the
+            Client report — separating facts from dimensions, settling grain, and documenting join
+            logic so the next analyst wouldn't have to reverse-engineer my reasoning. This is where
+            data modelling stopped being an abstraction from lecture notes.
+          </p>
+          <div class="stack"><span>Star schema</span><span>Data modelling</span><span>Documentation</span></div>
+        </article>
+
+        <article class="card">
+          <span class="key">Thread 03</span>
+          <h3>Teaching star schemas internally</h3>
+          <p>
+            When project work slowed, I wrote an article and learning materials on dimensional
+            modelling for our internal knowledge platform and presented them to the Data &amp;
+            Analytics community of practice. Explaining it to experienced practitioners exposed
+            every gap in my own understanding — which was the point.
+          </p>
+          <div class="stack"><span>Technical writing</span><span>Presenting</span><span>SharePoint</span></div>
+        </article>
+      </div>
+
+      <p style="margin-top:36px">
+        The skills split roughly in half. Relational modelling, normalization, and query thinking
+        came from coursework and transferred cleanly. Everything else — reading a business
+        requirement charitably, knowing when to ask a question versus when to try it first,
+        writing documentation for a stranger — I learned on the job, mostly by getting it slightly
+        wrong first.
+      </p>
+
+      <!-- ▼▼ REPLACE THE src BELOW WITH YOUR IMAGE LINK ▼▼ -->
+      <figure>
+        <img src="image.png"
+             alt="Daman during the co-op work term at Equitable Life of Canada."
+             width="1600" height="1000">
+        <figcaption>
+            Working on PowerBI stuff AKA Larping.
+        </figcaption>
+      </figure>
+      <!-- ▲▲ REPLACE THE src ABOVE WITH YOUR IMAGE LINK ▲▲ -->
+    </section>
+
+    <section id="reflection">
+      <div class="head">
+        <span class="key">04 / reflection</span>
+        <h2>What changed in how I think</h2>
+      </div>
+      <p>
+        The most valuable feedback I got had nothing to do with tooling. It was that I needed to
+        develop more curiosity about the <em>why</em> behind the data — to treat a number as the
+        start of a question rather than the end of a task.
+      </p>
+
+      <p class="pull">
+        A dashboard that renders correctly and a dashboard that's right are two different
+        deliverables, and only one of them shows up in the build.
+      </p>
+
+      <p>
+        Looking back, I could see the pattern. When a metric came back lower than expected, my
+        instinct was to check my measure for bugs. The better instinct — the one the people around
+        me had — was to ask whether the underlying process changed, whether a source system started
+        recording something differently, whether the definition everyone was using had quietly
+        drifted. Correct code over a misunderstood input produces a confident wrong answer, and
+        those are the expensive kind.
+      </p>
+      <p>
+        The second thing I'm working on is interpersonal communication. I found presenting to a
+        room easier than the smaller, more frequent thing: proactively pulling someone aside early
+        with a half-formed question. I defaulted to figuring it out alone longer than I should
+        have, which is a habit that reads as self-sufficiency and is often just slower.
+      </p>
+      <p>
+        The unexpected takeaway is how much of technical work is definitional. Weeks of the term
+        went into getting people to agree on what a word meant before any of it could be measured.
+        I came in thinking data governance was a constraint on engineering. I left thinking it's
+        the thing that makes engineering output trustworthy enough to act on.
+      </p>
+    </section>
+
+    <section id="conclusion">
+      <div class="head">
+        <span class="key">05 / conclusion</span>
+        <h2>Where this leaves me</h2>
+      </div>
+      <p>
+        If you took one thing from this page, I'd want it to be this: I spent four months learning
+        that the hard part of data work isn't building the model, it's knowing what the model is
+        claiming and whether that claim holds. I can build a dimensional model and a Power BI
+        report end to end. I can teach the concept to people who already know it. And I now know
+        precisely which instinct I'm missing and what it costs — which is a better position than
+        finishing a work term with nothing but a list of things that went well.
+      </p>
+      <p>
+        Next term I want to work somewhere the data volume forces the question earlier, and I want
+        to be the person who asks it first.
+      </p>
+    </section>
+
+    <section id="thanks">
+      <div class="head">
+        <span class="key">06 / acknowledgments</span>
+        <h2>Thank you</h2>
+      </div>
+      <p class="thanks">
+        To my supervisor on the Data &amp; Analytics team, for giving a first-term co-op real
+        deliverables and then telling me plainly what I needed to work on — the second part is
+        rarer than the first. To the Data Governance &amp; Quality team for answering questions that
+        must have had obvious answers, and to the colleagues across departments who let me sit in on
+        work that wasn't mine. To the other co-op students, for the ping pong table and for making a
+        first corporate job feel far less intimidating than it could have. And to the University of
+        Guelph Co-op office for the placement.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Daman · Co-op Work Term Report</span>
+    <span>Equitable Life of Canada · May–August 2026</span>
+    <span>University of Guelph</span>
+  </footer>
+
+</div>
+</body>
+</html>
